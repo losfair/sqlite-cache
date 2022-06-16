@@ -135,7 +135,7 @@ create table if not exists {} (
     expiry integer not null,
     ttl integer not null
 );
-create index {}_by_expiry on {} (expiry);
+create index if not exists {}_by_expiry on {} (expiry);
 commit;
 "#,
             table_name, table_name, table_name,
