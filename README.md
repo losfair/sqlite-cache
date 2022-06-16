@@ -1,6 +1,6 @@
 # sqlite-cache
 
-![crates.io](https://img.shields.io/crates/v/sqlite-cache.svg)
+[![crates.io](https://img.shields.io/crates/v/sqlite-cache.svg)](https://crates.io/crates/sqlite-cache)
 
 SQLite-based on-disk cache for Rust.
 
