@@ -1,0 +1,17 @@
+[package]
+name = "sqlite-cache"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rusqlite = "0.27"
+data-encoding = "2.3.2"
+futures = "0.3.21"
+tracing = "0.1.35"
+
+[dev-dependencies]
+tracing-test = "0.2.2"
+tokio = { version = "1.19.2", features = ["macros", "rt", "time"] }
+rand = "0.8"
