@@ -1,5 +1,7 @@
 # sqlite-cache
 
+![crates.io](https://img.shields.io/crates/v/sqlite-cache.svg)
+
 SQLite-based on-disk cache for Rust.
 
 ## Usage
