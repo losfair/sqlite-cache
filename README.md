@@ -26,3 +26,20 @@ let (updater, current_value) = topic.get_for_update("hello").await.unwrap();
 let new_value = expensive_computation(current_value).await;
 updater.write(new_value, Duration::from_secs(60)).unwrap();
 ```
+
+## Benchmark
+
+These results are from running `benches/cache_benchmark.rs` on an Apple M1 processor.
+
+- `mt(4)`: Per-thread operation latency when running the same task on 4 threads.
+
+```
+lookup - cache size 10000
+                        time:   [1.5978 us 1.6051 us 1.6130 us]
+lookup mt(4) - cache size 10000
+                        time:   [9.7801 us 9.8464 us 9.9329 us]
+insert - cache size 10000
+                        time:   [4.6316 us 4.6785 us 4.7169 us]
+insert mt(4) - cache size 10000
+                        time:   [21.195 us 21.420 us 21.614 us]
+```
