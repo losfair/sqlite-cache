@@ -26,6 +26,7 @@ async fn test_get_update() {
     )
     .unwrap();
     let topic = cache.topic("test-topic").unwrap();
+    cache.topic("test-topic").unwrap(); // not used
     cache.topic("test-topic-2").unwrap(); // not used
     assert!(topic.get("hello").unwrap().is_none());
 
