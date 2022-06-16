@@ -2,6 +2,9 @@
 name = "sqlite-cache"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
+authors = ["Heyang Zhou <zhy20000919@hotmail.com>"]
+description = "SQLite-based on-disk cache."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

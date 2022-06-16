@@ -1,2 +1,2 @@
 # sqlite-cache
-SQLite-based on-disk LRU cache for Rust.
+SQLite-based on-disk cache for Rust.
