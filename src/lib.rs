@@ -106,7 +106,7 @@ impl Cache {
             .lock()
             .unwrap()
             .unchecked_transaction()?
-            .prepare("select name from sqlite_schema where type = 'table' and name like 'topic_%'")?
+            .prepare("select name from sqlite_master where type = 'table' and name like 'topic_%'")?
             .query_map(rusqlite::params![], |x| x.get::<_, String>(0))?
             .collect::<Result<Vec<String>, rusqlite::Error>>()?;
         let mut total = 0usize;
