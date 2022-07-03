@@ -180,7 +180,8 @@ impl Topic {
                         .duration_since(UNIX_EPOCH)
                         .unwrap()
                         .as_secs()
-                        + ttl,
+                        .saturating_add(ttl)
+                        .min(i64::MAX as u64),
                 );
             Ok(Some(Value { data, created_at }))
         } else {
@@ -234,11 +235,13 @@ impl Topic {
             let max_ttl = max_ttl.as_secs();
             ttl = ttl.min(max_ttl);
         }
+        ttl = ttl.min(i64::MAX as u64);
         let expiry = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_secs()
-            + ttl;
+            .saturating_add(ttl)
+            .min(i64::MAX as u64);
         stmt.execute(rusqlite::params![key, value, expiry, ttl])?;
         self.inner
             .cache

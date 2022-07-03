@@ -100,3 +100,17 @@ async fn test_gc() {
     tokio::time::sleep(Duration::from_secs(3)).await;
     assert!(topic.get("hello").unwrap().is_none());
 }
+
+// https://github.com/losfair/sqlite-cache/issues/1
+#[test]
+#[traced_test]
+fn test_large_durations() {
+    let cache = Cache::new(
+        CacheConfig::default(),
+        Connection::open_in_memory().unwrap(),
+    )
+    .unwrap();
+
+    let topic = cache.topic("test-topic").unwrap();
+    topic.set("key", b"value", Duration::MAX).unwrap();
+}
