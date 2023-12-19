@@ -80,10 +80,7 @@ impl Cache {
     }
 
     fn flush(&self) {
-        let lazy_expiry_update = std::mem::replace(
-            &mut *self.inner.lazy_expiry_update.lock().unwrap(),
-            HashMap::new(),
-        );
+        let lazy_expiry_update = std::mem::take(&mut *self.inner.lazy_expiry_update.lock().unwrap());
         for ((table_name, key), expiry) in lazy_expiry_update {
             let res = self.inner.conn.lock().unwrap().execute(
                 &format!("update {} set expiry = ? where k = ?", table_name),
