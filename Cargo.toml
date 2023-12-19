@@ -10,7 +10,7 @@ repository = "https://github.com/losfair/sqlite-cache"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rusqlite = { version = "0.27", features = ["bundled"] }
+rusqlite = { version = "0.30", features = ["bundled"] }
 data-encoding = "2.5.0"
 futures = "0.3.29"
 tracing = "0.1.40"
@@ -19,7 +19,7 @@ tracing = "0.1.40"
 tracing-test = "0.2.4"
 tokio = { version = "1.35.0", features = ["macros", "rt", "time"] }
 rand = "0.8"
-criterion = "0.3"
+criterion = "0.5"
 
 [[bench]]
 name = "cache_benchmark"
